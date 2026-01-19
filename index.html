@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Centro La Ruche</title>
+  <meta name="description" content="La Ruche — un'opera vivente, una scuola vocazionale.">
+  <link rel="preload" as="image" href="assets/laruche-hero.jpg">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="email">info@centrolaruche.it</div>
+    <button class="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="menu" class="menu" hidden>
+      <!-- Contenuti del menu (modificabili liberamente) -->
+      <!-- Esempio:
+      <a href="#origine">Origine</a>
+      <a href="#cosa-facciamo">Cosa facciamo</a>
+      <a href="#contatti">Contatti</a>
+      -->
+    </nav>
+  </header>
+
+  <main class="hero" role="main" aria-label="Landing La Ruche">
+    <div class="hero-image" role="img" aria-label="Cartolina storica La Ruche"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="bottom-claims">
+      <div class="claim left">un’opera vivente</div>
+      <div class="dot" aria-hidden="true">·</div>
+      <div class="claim right">una scuola vocazionale</div>
+    </div>
+  </main>
+
+  <script>
+    // Hamburger toggle
+    const btn = document.querySelector('.hamburger');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (menu.hasAttribute('hidden')) {
+        menu.removeAttribute('hidden');
+      } else {
+        menu.setAttribute('hidden', '');
+      }
+    });
+  </script>
+</body>
+</html>
