@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* EMAIL */
+.email {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #1f1f1f;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+/* CLAIMS */
+.claims {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  color: #e8e3d8;
+  font-size: 22px;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .claims {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+  }
+}
