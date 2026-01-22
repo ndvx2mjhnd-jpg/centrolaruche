@@ -1,62 +1,37 @@
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
 
-/* BASE */
-html, body {
-  width: 100%;
-  height: 100%;
+/* BODY */
+body {
+  background: #e9e2d7; /* tono carta */
   font-family: Georgia, "Times New Roman", serif;
-  background-color: #f3eadc;
 }
 
-/* HERO */
-.hero {
-  position: relative;
+/* HERO: l'immagine DEVE stare tutta dentro lo schermo */
+.hero{
   width: 100vw;
   height: 100vh;
 
   background-image: url("./hero.jpeg");
   background-repeat: no-repeat;
   background-position: center center;
-
-  /* MOSTRA TUTTA L’IMMAGINE, SENZA TAGLI */
-  background-size: contain;
-
-  background-color: #f3eadc;
+  background-size: contain; /* <-- così NON taglia le scritte in basso */
 }
 
-/* EMAIL */
-.email {
-  position: absolute;
-  top: 14px;
+/* EMAIL: piccola, centrata, non invadente */
+.email{
+  position: fixed;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 10;
 
-  color: #1a1a1a;
+  color: #1f1f1f;
+  text-decoration: underline;
   font-size: 18px;
   letter-spacing: 0.02em;
-
-  text-decoration: underline;
-  text-underline-offset: 4px;
-
-  background: rgba(243, 234, 220, 0.65);
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-/* ❌ DISATTIVA DEFINITIVAMENTE LE SCRITTE IN BASSO */
-.bottom {
-  display: none !important;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .email {
-    font-size: 16px;
-  }
+  background: rgba(233, 226, 215, 0.55); /* micro fondino per leggibilità */
+  padding: 6px 10px;
+  border-radius: 6px;
 }
