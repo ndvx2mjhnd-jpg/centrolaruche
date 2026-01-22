@@ -5,16 +5,20 @@
 
 html, body { height: 100%; }
 
-/* HERO full screen con immagine */
 .hero{
-  height: 100vh;
-  width: 100vw;
   position: relative;
+  width: 100vw;
+  height: 100vh;
+
   background-image: url("./hero.jpeg");
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
+
+  /* QUESTO è il punto chiave */
+  background-size: contain;
+  background-position: center center;
+
+  /* colore di fondo coerente con la carta */
+  background-color: #f3eadc;
 }
 
 /* EMAIL */
