@@ -23,10 +23,9 @@ html, body {
   background-repeat: no-repeat;
   background-position: center center;
 
-  /* MOSTRA TUTTA L’IMMAGINE */
+  /* MOSTRA TUTTA L’IMMAGINE, SENZA TAGLI */
   background-size: contain;
 
-  /* COLORE CARTA */
   background-color: #f3eadc;
 }
 
@@ -45,30 +44,19 @@ html, body {
   text-decoration: underline;
   text-underline-offset: 4px;
 
-  background: rgba(243, 234, 220, 0.6);
+  background: rgba(243, 234, 220, 0.65);
   padding: 4px 8px;
   border-radius: 4px;
 }
 
-/* TESTI IN BASSO */
+/* ❌ DISATTIVA DEFINITIVAMENTE LE SCRITTE IN BASSO */
 .bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-  padding: 0 32px;
-  z-index: 2;
-
-  display: flex;
-  justify-content: space-between;
-
-  color: #e9e4dc;
-  font-size: 40px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
+  display: none !important;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .bottom {
-    font-size: 22
+  .email {
+    font-size: 16px;
+  }
+}
