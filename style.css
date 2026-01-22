@@ -21,23 +21,22 @@ html, body { height: 100%; }
   background-color: #f3eadc;
 }
 
-/* EMAIL */
 .email{
   position: absolute;
-  top: 40px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 22px;
+  z-index: 2;
+
+  color: #1a1a1a;
+  font-size: 18px;
   letter-spacing: 0.02em;
-  color: #1b1b1b;
-  text-decoration: none;
-  background: rgba(255,255,255,0.0);
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-.email:hover{
   text-decoration: underline;
+  text-underline-offset: 4px;
+
+  background: rgba(243, 234, 220, 0.6);
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 /* HAMBURGER */
