@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>La prima Ruche</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="image-page">
+
+<header class="menu">
+  <nav>
+    <a href="index.html">←</a>
+    <a href="#" onclick="openOverlay(event)">La seconda Ruche</a>
+  </nav>
+</header>
+
+<main class="image-container">
+  <img src="assets/img/la-prima-ruche.jpeg" alt="La prima Ruche">
+</main>
+
+<!-- OVERLAY -->
+<div id="overlay-ruche" class="overlay" aria-hidden="true">
+  <div class="overlay-content">
+    Lavori in corso
+  </div>
+</div>
+
+<script>
+  function openOverlay(e) {
+    if (e) e.preventDefault();
+    const ov = document.getElementById('overlay-ruche');
+    ov.classList.add('show');
+    ov.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeOverlay() {
+    const ov = document.getElementById('overlay-ruche');
+    ov.classList.remove('show');
+    ov.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('overlay-ruche').addEventListener('click', closeOverlay);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeOverlay();
+  });
+</script>
+
+</body>
+</html>
