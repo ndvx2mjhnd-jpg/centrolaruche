@@ -1,58 +1,49 @@
-<!-- index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
   <title>Centro La Ruche</title>
-  <!-- se hai problemi di cache, cambia v=1 in v=2, v=3... -->
-  <link rel="stylesheet" href="./style.css?v=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <main class="hero" aria-label="Hero Centro La Ruche">
-    <!-- Email cliccabile -->
-    <a class="email" href="mailto:centrolaruche@gmail.com">centrolaruche@gmail.com</a>
 
-    <!-- Hamburger -->
-    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<header class="menu">
+  <nav>
+    <a href="la-prima-ruche.html">La prima Ruche</a>
+    <a href="#" onclick="openOverlay(event)">La seconda Ruche</a>
+  </nav>
+</header>
 
-    <!-- Overlay menu -->
-    <div class="menu-overlay" aria-hidden="true">
-      <div class="menu-content" role="dialog" aria-label="Menu">
-        <p>In arrivo</p>
-      </div>
-    </div>
-  </main>
+<main class="home"></main>
 
-  <script>
-    const btn = document.querySelector('.menu-btn');
-    const overlay = document.querySelector('.menu-overlay');
+<!-- OVERLAY -->
+<div id="overlay-ruche" class="overlay" aria-hidden="true">
+  <div class="overlay-content">
+    Lavori in corso
+  </div>
+</div>
 
-    function openMenu() {
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      btn.setAttribute('aria-expanded', 'true');
-    }
+<script>
+  function openOverlay(e) {
+    if (e) e.preventDefault();
+    const ov = document.getElementById('overlay-ruche');
+    ov.classList.add('show');
+    ov.setAttribute('aria-hidden', 'false');
+  }
 
-    function closeMenu() {
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-      btn.setAttribute('aria-expanded', 'false');
-    }
+  function closeOverlay() {
+    const ov = document.getElementById('overlay-ruche');
+    ov.classList.remove('show');
+    ov.setAttribute('aria-hidden', 'true');
+  }
 
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      overlay.classList.contains('open') ? closeMenu() : openMenu();
-    });
+  document.getElementById('overlay-ruche').addEventListener('click', closeOverlay);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeOverlay();
+  });
+</script>
 
-    overlay.addEventListener('click', closeMenu);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
-  </script>
 </body>
 </html>
