@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>La prima Ruche</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="hero-page">
+
+  <!-- HERO -->
+  <main class="hero hero-ruche" role="main">
+    <div class="hero-card">
+      <div class="hero-title">La prima Ruche</div>
+      <div class="hero-subtitle">Rambouillet, 1904–1917</div>
+    </div>
+  </main>
+
+  <!-- HAMBURGER -->
+  <button class="burger" id="burgerBtn" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- DRAWER MENU -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="la-prima-ruche-hero.html" class="drawer-link">La prima Ruche</a>
+      <a href="la-prima-ruche.html" class="drawer-link">Archivio</a>
+      <a href="#" class="drawer-link" id="secondaRucheLink">La seconda Ruche</a>
+      <div class="drawer-divider"></div>
+      <a href="mailto:centrolaruche@gmail.com" class="drawer-link">Contatti</a>
+    </nav>
+  </aside>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- OVERLAY -->
+  <div id="overlay-ruche" class="overlay">
+    <div class="overlay-content">Lavori in corso</div>
+  </div>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const drawer = document.getElementById('drawer');
+    const backdrop = document.getElementById('backdrop');
+    const overlay = document.getElementById('overlay-ruche');
+    const secondaRucheLink = document.getElementById('secondaRucheLink');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      backdrop.classList.add('show');
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('show');
+    }
+
+    function openOverlay(e) {
+      e.preventDefault();
+      overlay.classList.add('show');
+    }
+
+    function closeOverlay() {
+      overlay.classList.remove('show');
+    }
+
+    burgerBtn.addEventListener('click', () => {
+      drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+    });
+
+    backdrop.addEventListener('click', closeDrawer);
+    secondaRucheLink.addEventListener('click', openOverlay);
+    overlay.addEventListener('click', closeOverlay);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+        closeOverlay();
+      }
+    });
+  </script>
+
+</body>
+</html>
