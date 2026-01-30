@@ -211,3 +211,36 @@ body{
   .hero-title{ font-size: 20px; }
   .overlay-content{ font-size: 20px; }
 }
+/* --------------------------
+   HERO PAGE – Prima Ruche
+-------------------------- */
+
+.hero-page .hero-ruche{
+  min-height: 100vh;
+  background: url("assets/img/la-prima-ruche.jpeg") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+}
+
+.hero-page .hero-ruche::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(246,244,239,0.55),
+    rgba(246,244,239,0.05)
+  );
+}
+
+.hero-page .hero-card{
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  background: rgba(246,244,239,0.88);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
