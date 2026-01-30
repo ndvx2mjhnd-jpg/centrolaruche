@@ -9,43 +9,88 @@
 
 <body class="image-page">
 
-<header class="menu">
-  <nav>
-    <a href="index.html">←</a>
-    <a href="#" onclick="openOverlay(event)">La seconda Ruche</a>
-  </nav>
-</header>
+  <main class="image-container" role="main">
+    <img src="assets/img/la-prima-ruche.jpeg" alt="La prima Ruche">
+  </main>
 
-<main class="image-container">
-  <img src="assets/img/la-prima-ruche.jpeg" alt="La prima Ruche">
-</main>
+  <!-- HAMBURGER -->
+  <button class="burger" id="burgerBtn" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 
-<!-- OVERLAY -->
-<div id="overlay-ruche" class="overlay" aria-hidden="true">
-  <div class="overlay-content">
-    Lavori in corso
+  <!-- DRAWER MENU -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="la-prima-ruche.html" class="drawer-link">La prima Ruche</a>
+      <a href="#" class="drawer-link" id="secondaRucheLink">La seconda Ruche</a>
+      <div class="drawer-divider"></div>
+      <a href="mailto:centrolaruche@gmail.com" class="drawer-link">Contatti</a>
+    </nav>
+  </aside>
+
+  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+  <!-- OVERLAY “Lavori in corso” -->
+  <div id="overlay-ruche" class="overlay" aria-hidden="true">
+    <div class="overlay-content">Lavori in corso</div>
   </div>
-</div>
 
-<script>
-  function openOverlay(e) {
-    if (e) e.preventDefault();
-    const ov = document.getElementById('overlay-ruche');
-    ov.classList.add('show');
-    ov.setAttribute('aria-hidden', 'false');
-  }
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const drawer = document.getElementById('drawer');
+    const backdrop = document.getElementById('backdrop');
+    const overlay = document.getElementById('overlay-ruche');
+    const secondaRucheLink = document.getElementById('secondaRucheLink');
 
-  function closeOverlay() {
-    const ov = document.getElementById('overlay-ruche');
-    ov.classList.remove('show');
-    ov.setAttribute('aria-hidden', 'true');
-  }
+    function openDrawer() {
+      drawer.classList.add('open');
+      backdrop.classList.add('show');
+      drawer.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
+      burgerBtn.setAttribute('aria-expanded', 'true');
+    }
 
-  document.getElementById('overlay-ruche').addEventListener('click', closeOverlay);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeOverlay();
-  });
-</script>
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('show');
+      drawer.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function openOverlay(e) {
+      if (e) e.preventDefault();
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeOverlay() {
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    burgerBtn.addEventListener('click', () => {
+      if (drawer.classList.contains('open')) closeDrawer();
+      else openDrawer();
+    });
+
+    backdrop.addEventListener('click', closeDrawer);
+
+    secondaRucheLink.addEventListener('click', (e) => {
+      closeDrawer();
+      openOverlay(e);
+    });
+
+    overlay.addEventListener('click', closeOverlay);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+        closeOverlay();
+      }
+    });
+  </script>
 
 </body>
 </html>
