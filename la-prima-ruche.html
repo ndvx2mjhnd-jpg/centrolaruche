@@ -1,96 +1,32 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <title>La prima Ruche</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Prima Ruche — Centro La Ruche</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="image-page">
+<body class="ruche-page">
 
-  <main class="image-container" role="main">
-    <img src="assets/img/la-prima-ruche.jpeg" alt="La prima Ruche">
+  <header class="ruche-header">
+    <a href="index.html" class="back-home">← Centro La Ruche</a>
+  </header>
+
+  <main class="ruche-content">
+
+    <figure class="ruche-hero">
+      <img src="assets/img/la-prima-ruche.jpeg" alt="La Prima Ruche">
+    </figure>
+
+    <section class="ruche-text">
+      <p class="ruche-quote">
+        « Nel febbraio 1917 la Ruche morì, vittima come tante altre opere
+        edificate amorevolmente, della Guerra, orrore perpetuo. »
+      </p>
+    </section>
+
   </main>
-
-  <!-- HAMBURGER -->
-  <button class="burger" id="burgerBtn" aria-label="Apri menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-
-  <!-- DRAWER MENU -->
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <nav class="drawer-nav">
-      <a href="index.html" class="drawer-link">Home</a>
-      <a href="la-prima-ruche.html" class="drawer-link">La prima Ruche</a>
-      <a href="#" class="drawer-link" id="secondaRucheLink">La seconda Ruche</a>
-      <div class="drawer-divider"></div>
-      <a href="mailto:centrolaruche@gmail.com" class="drawer-link">Contatti</a>
-    </nav>
-  </aside>
-
-  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
-
-  <!-- OVERLAY “Lavori in corso” -->
-  <div id="overlay-ruche" class="overlay" aria-hidden="true">
-    <div class="overlay-content">Lavori in corso</div>
-  </div>
-
-  <script>
-    const burgerBtn = document.getElementById('burgerBtn');
-    const drawer = document.getElementById('drawer');
-    const backdrop = document.getElementById('backdrop');
-    const overlay = document.getElementById('overlay-ruche');
-    const secondaRucheLink = document.getElementById('secondaRucheLink');
-
-    function openDrawer() {
-      drawer.classList.add('open');
-      backdrop.classList.add('show');
-      drawer.setAttribute('aria-hidden', 'false');
-      backdrop.setAttribute('aria-hidden', 'false');
-      burgerBtn.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      backdrop.classList.remove('show');
-      drawer.setAttribute('aria-hidden', 'true');
-      backdrop.setAttribute('aria-hidden', 'true');
-      burgerBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    function openOverlay(e) {
-      if (e) e.preventDefault();
-      overlay.classList.add('show');
-      overlay.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeOverlay() {
-      overlay.classList.remove('show');
-      overlay.setAttribute('aria-hidden', 'true');
-    }
-
-    burgerBtn.addEventListener('click', () => {
-      if (drawer.classList.contains('open')) closeDrawer();
-      else openDrawer();
-    });
-
-    backdrop.addEventListener('click', closeDrawer);
-
-    secondaRucheLink.addEventListener('click', (e) => {
-      closeDrawer();
-      openOverlay(e);
-    });
-
-    overlay.addEventListener('click', closeOverlay);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeDrawer();
-        closeOverlay();
-      }
-    });
-  </script>
 
 </body>
 </html>
