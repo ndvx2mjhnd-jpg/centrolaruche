@@ -1,246 +1,105 @@
+/* style.css */
+
 /* RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root{
-  --bg: #f6f4ef;
-  --ink: #1a1a1a;
-  --glass: rgba(246,244,239,0.88);
-  --glass2: rgba(246,244,239,0.92);
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #efe7dd; /* carta/cielo */
 }
 
-/* BASE */
-body{
-  background: var(--bg);
-  color: var(--ink);
-  font-family: "EB Garamond","Garamond",serif attaches;
-}
-
-/* --------------------------
-   HOME / HERO (come prima: hero + card)
--------------------------- */
-.home-page .hero{
-  min-height: 100vh;
-  background: url("hero.jpeg") center/cover no-repeat;
+/* HERO */
+.hero {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 22px;
-}
-
-/* leggera velatura per far leggere i testi */
-.home-page .hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to top, rgba(246,244,239,0្45), rgba(246,244,239,0.08));
-  pointer-events:none;
-}
-
-.hero-card{
-  position: relative;
-  z-index: 1;
-  max-width: 520px;
-  background: var(--glass);
-  backdrop-filter: blur(6px);
-  border-radius: 14px;
-  padding: 16px 18px;
-}
-
-.hero-title{
-  font-size: 22px;
-  letter-spacing: 0.02em;
-}
-
-.hero-subtitle{
-  margin-top: 4px;
-  font-size: 16px;
-  opacity: 0.78;
-  letter-spacing: 0.02em;
-}
-
-.hero-contact{
-  margin-top: 10px;
-}
-
-.hero-link{
-  color: var(--ink);
-  text-decoration: none;
-  opacity: 0.85;
-}
-.hero-link:hover{ text-decoration: underline; }
-
-/* --------------------------
-   HAMBURGER BUTTON
--------------------------- */
-.burger{
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 200;
-  width: 46px;
-  height: 46px;
-  border: none;
-  border-radius: 12px;
-  background: var(--glass2);
-  backdrop-filter: blur(6px);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
-
-.burger span{
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--ink);
-  margin: 3px 0;
-  opacity: 0.9;
-}
-
-/* --------------------------
-   DRAWER MENU
--------------------------- */
-.drawer{
-  position: fixed;
-  top: 0;
-  right: 0;
+  width: 100vw;
   height: 100vh;
-  width: min(360px, 86vw);
-  background: rgba(246,244,239,0.97);
-  backdrop-filter: blur(10px);
-  transform: translateX(102%);
-  transition: transform 240ms ease;
-  z-index: 190;
-  padding: 84px 20px 20px;
+
+  background-image: url("./hero.jpeg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;       /* mostra tutta l’immagine */
+  background-color: #efe7dd;      /* match cielo/cartolina */
 }
 
-.drawer.open{
-  transform: translateX(0);
-}
+/* EMAIL (riquadro colore cielo) */
+.email {
+  position: fixed;               /* fisso: non si sposta e non finisce sotto */
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
 
-.drawer-nav{
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.drawer-link{
-  color: var(--ink);
-  text-decoration: none;
+  color: #1f1f1f;
+  text-decoration: underline;
+  text-underline-offset: 4px;
   font-size: 18px;
   letter-spacing: 0.02em;
+
+  /* questo è il “cielo” */
+  background: rgba(239, 231, 221, 0.88);
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  /* leggerissimo stacco, quasi invisibile */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+/* HAMBURGER BUTTON (assicurato visibile) */
+.menu-btn {
+  position: fixed;               /* fisso */
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 40px;
+  background: rgba(239, 231, 221, 0.72); /* stesso tono del cielo */
+  border: 0;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 10000;                /* sopra tutto */
+}
+
+.menu-btn span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #1f1f1f;
+  margin: 6px 0;
+  border-radius: 2px;
   opacity: 0.9;
 }
 
-.drawer-link:hover{
-  text-decoration: underline;
-}
-
-.drawer-divider{
-  height: 1px;
-  background: rgba(0,0,0,0.12);
-  margin: 8px 0;
-}
-
-/* backdrop */
-.backdrop{
+/* OVERLAY MENU */
+.menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.12);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 240ms ease;
-  z-index: 180;
-}
-
-.backdrop.show{
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* --------------------------
-   OVERLAY "Lavori in corso"
--------------------------- */
-.overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(246,244,239,0.92);
+  background: rgba(239, 231, 221, 0.96); /* match cielo */
   display: flex;
   align-items: center;
   justify-content: center;
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 220ms ease;
-  z-index: 300;
+
+  z-index: 20000;
 }
 
-.overlay.show{
+.menu-overlay.open {
   opacity: 1;
   pointer-events: auto;
 }
 
-.overlay-content{
-  font-size: 22px;
-  letter-spacing: 0.04em;
-  opacity: 0.75;
+.menu-content {
+  color: #1f1f1f;
+  font-size: 28px;
+  letter-spacing: 0.08em;
 }
 
-/* --------------------------
-   PAGINA IMMAGINE (Prima Ruche)
--------------------------- */
-.image-page{
-  background: var(--bg);
-}
-
-.image-container{
-  display: flex;
-  justify-content: center;
-  padding: 22px;
-}
-
-.image-container img{
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* mobile fine tuning */
-@media (max-width: 520px){
-  .hero-card{ max-width: 92vw; }
-  .hero-title{ font-size: 20px; }
-  .overlay-content{ font-size: 20px; }
-}
-/* --------------------------
-   HERO PAGE – Prima Ruche
--------------------------- */
-
-.hero-page .hero-ruche{
-  min-height: 100vh;
-  background: url("assets/img/la-prima-ruche.jpeg") center/cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding: 22px;
-}
-
-.hero-page .hero-ruche::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    to top,
-    rgba(246,244,239,0.55),
-    rgba(246,244,239,0.05)
-  );
-}
-
-.hero-page .hero-card{
-  position: relative;
-  z-index: 1;
-  max-width: 520px;
-  background: rgba(246,244,239,0.88);
-  backdrop-filter: blur(6px);
-  border-radius: 14px;
-  padding: 16px 18px;
+/* MOBILE */
+@media (max-width: 768px) {
+  .email { font-size: 16px; top: 14px; }
+  .menu-content { font-size: 24px; }
 }
