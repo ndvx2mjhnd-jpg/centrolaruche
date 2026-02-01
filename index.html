@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="it">
 <head>
@@ -19,61 +18,74 @@
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Overlay menu -->
-   <div class="menu-content" role="dialog" aria-label="Menu">
-  <a href="prima-ruche.html" class="menu-link">
-    La prima Ruche
-  </a>
+    <!-- MENU (dentro hamburger overlay) -->
+    <div class="menu-overlay" aria-hidden="true">
+      <div class="menu-content" role="dialog" aria-label="Menu">
+        <a href="prima-ruche.html" class="menu-link">La prima Ruche</a>
 
-  <button class="menu-link" onclick="openOverlay()">
-    La seconda Ruche
-  </button>
-</div>
+        <button class="menu-link" type="button" onclick="openSecondaRuche()">
+          La seconda Ruche
+        </button>
+      </div>
     </div>
   </main>
 
+  <!-- OVERLAY SECONDA RUCHE -->
+  <div id="seconda-ruche" class="overlay" aria-hidden="true">
+    <div class="overlay-content" role="dialog" aria-label="Lavori in corso">
+      <p>Lavori in corso</p>
+      <button type="button" class="overlay-close" onclick="closeSecondaRuche()">Chiudi</button>
+    </div>
+  </div>
+
   <script>
     const btn = document.querySelector('.menu-btn');
-    const overlay = document.querySelector('.menu-overlay');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const secondaRuche = document.getElementById('seconda-ruche');
 
     function openMenu() {
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
+      menuOverlay.classList.add('open');
+      menuOverlay.setAttribute('aria-hidden', 'false');
       btn.setAttribute('aria-expanded', 'true');
     }
 
     function closeMenu() {
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
+      menuOverlay.classList.remove('open');
+      menuOverlay.setAttribute('aria-hidden', 'true');
       btn.setAttribute('aria-expanded', 'false');
     }
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      overlay.classList.contains('open') ? closeMenu() : openMenu();
+      menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    overlay.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
 
+    function openSecondaRuche() {
+      closeMenu();
+      secondaRuche.style.display = 'flex';
+      secondaRuche.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeSecondaRuche() {
+      secondaRuche.style.display = 'none';
+      secondaRuche.setAttribute('aria-hidden', 'true');
+    }
+
+    // Chiudi overlay cliccando fuori dal box
+    secondaRuche.addEventListener('click', closeSecondaRuche);
+    // Evita chiusura cliccando dentro al box
+    document.querySelector('.overlay-content').addEventListener('click', (e) => e.stopPropagation());
+
+    // ESC chiude tutto
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
+      if (e.key === 'Escape') {
+        closeMenu();
+        closeSecondaRuche();
+      }
     });
   </script>
-  <!-- OVERLAY SECONDA RUCHE -->
-<div id="overlay" class="overlay">
-  <div class="overlay-content">
-    <p>Lavori in corso</p>
-    <button onclick="closeOverlay()">Chiudi</button>
-  </div>
-</div>
-  <script>
-  function openOverlay() {
-    document.getElementById('overlay').style.display = 'flex';
-  }
 
-  function closeOverlay() {
-    document.getElementById('overlay').style.display = 'none';
-  }
-</script>
 </body>
 </html>
