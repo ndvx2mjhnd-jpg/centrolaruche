@@ -20,6 +20,9 @@
     </button>
 <nav class="menu">
   <a href="prima-ruche.html">La prima Ruche</a>
+  <button onclick="openOverlay()" class="menu-link">
+  La seconda Ruche
+</button>
 
   <button class="overlay-trigger" onclick="openOverlay()">
     La seconda Ruche
@@ -60,6 +63,22 @@
       if (e.key === 'Escape') closeMenu();
     });
   </script>
+  <!-- OVERLAY SECONDA RUCHE -->
+<div id="overlay" class="overlay">
+  <div class="overlay-content">
+    <p>Lavori in corso</p>
+    <button onclick="closeOverlay()">Chiudi</button>
+  </div>
+</div>
+  <script>
+  function openOverlay() {
+    document.getElementById('overlay').style.display = 'flex';
+  }
+
+  function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+</script>
 </body>
 </html>
 <div id="overlay" class="overlay">
