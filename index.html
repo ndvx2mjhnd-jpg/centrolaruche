@@ -4,21 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Centro La Ruche</title>
-  <!-- se hai problemi di cache, cambia v=1 in v=2, v=3... -->
-  <link rel="stylesheet" href="./style.css?v=1" />
+  <link rel="stylesheet" href="./style.css?v=2" />
 </head>
 
 <body>
   <main class="hero" aria-label="Hero Centro La Ruche">
-    <!-- Email cliccabile -->
     <a class="email" href="mailto:centrolaruche@gmail.com">centrolaruche@gmail.com</a>
 
-    <!-- Hamburger -->
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
-    <!-- MENU (dentro hamburger overlay) -->
     <div class="menu-overlay" aria-hidden="true">
       <div class="menu-content" role="dialog" aria-label="Menu">
         <a href="prima-ruche.html" class="menu-link">La prima Ruche</a>
@@ -30,7 +26,6 @@
     </div>
   </main>
 
-  <!-- OVERLAY SECONDA RUCHE -->
   <div id="seconda-ruche" class="overlay" aria-hidden="true">
     <div class="overlay-content" role="dialog" aria-label="Lavori in corso">
       <p>Lavori in corso</p>
@@ -73,12 +68,9 @@
       secondaRuche.setAttribute('aria-hidden', 'true');
     }
 
-    // Chiudi overlay cliccando fuori dal box
     secondaRuche.addEventListener('click', closeSecondaRuche);
-    // Evita chiusura cliccando dentro al box
     document.querySelector('.overlay-content').addEventListener('click', (e) => e.stopPropagation());
 
-    // ESC chiude tutto
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeMenu();
@@ -86,6 +78,5 @@
       }
     });
   </script>
-
 </body>
 </html>
