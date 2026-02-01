@@ -1,35 +1,36 @@
-/* style.css */
+/* =========================
+   Centro La Ruche — style.css
+   ========================= */
 
 /* RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; }
 
-html, body {
-  width: 100%;
-  height: 100%;
+body{
   font-family: Georgia, "Times New Roman", serif;
-  background: #efe7dd; /* carta/cielo */
+  background: #efe7dd;
+  color: #1f1f1f;
 }
 
 /* HERO */
-.hero {
+.hero{
   position: relative;
   width: 100vw;
   height: 100vh;
-
   background-image: url("./hero.jpeg");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;       /* mostra tutta l’immagine */
-  background-color: #efe7dd;      /* match cielo/cartolina */
+  background-size: contain;
+  background-color: #efe7dd;
 }
 
-/* EMAIL (riquadro colore cielo) */
-.email {
-  position: fixed;               /* fisso: non si sposta e non finisce sotto */
+/* EMAIL */
+.email{
+  position: fixed;
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 11000;
 
   color: #1f1f1f;
   text-decoration: underline;
@@ -37,128 +38,29 @@ html, body {
   font-size: 18px;
   letter-spacing: 0.02em;
 
-  /* questo è il “cielo” */
-  background: rgba(239, 231, 221, 0.88);
+  background: rgba(239, 231, 221, 0.90);
   padding: 6px 10px;
   border-radius: 6px;
-
-  /* leggerissimo stacco, quasi invisibile */
   box-shadow: 0 1px 0 rgba(0,0,0,0.05);
 }
 
-/* HAMBURGER BUTTON (assicurato visibile) */
-.menu-btn {
-  position: fixed;               /* fisso */
+/* HAMBURGER */
+.menu-btn{
+  position: fixed;
   top: 14px;
   right: 14px;
   width: 44px;
   height: 40px;
-  background: rgba(239, 231, 221, 0.72); /* stesso tono del cielo */
+  background: rgba(239, 231, 221, 0.75);
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 8px;
   cursor: pointer;
-  z-index: 10000;                /* sopra tutto */
+  z-index: 12000;
 }
 
-.menu-btn span {
+.menu-btn span{
   display: block;
+  width: 100%;
   height: 2px;
-  width: 100%;
-  background: #1f1f1f;
-  margin: 6px 0;
-  border-radius: 2px;
-  opacity: 0.9;
-}
-
-/* OVERLAY MENU */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(239, 231, 221, 0.96); /* match cielo */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease;
-
-  z-index: 20000;
-}
-
-.menu-overlay.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu-content {
-  color: #1f1f1f;
-  font-size: 28px;
-  letter-spacing: 0.08em;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .email { font-size: 16px; top: 14px; }
-  .menu-content { font-size: 24px; }
-}
-/* =========================
-   Pagine Ruche
-   ========================= */
-
-body.ruche-page {
-  background: #f5f1e8;
-  color: #1f1f1f;
-  font-family: Georgia, serif;
-}
-
-.ruche-header {
-  padding: 1.5rem;
-}
-
-.back-home {
-  text-decoration: none;
-  color: inherit;
-  font-size: 0.9rem;
-}
-
-.ruche-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem 4rem;
-}
-
-.ruche-hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 2rem;
-}
-
-.ruche-text {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.ruche-quote {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  font-style: italic;
-}
-/* OVERLAY - SECONDA RUCHE */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(245, 238, 228, 0.95);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.overlay-content {
-  font-family: serif;
-  font-size: 22px;
-  color: #222;
-}
+  background: #1f1
