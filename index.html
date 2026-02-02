@@ -4,39 +4,54 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Centro La Ruche</title>
+
+  <!-- Cache-buster: cambia 999 -> 1000 se non vedi aggiornamenti -->
   <link rel="stylesheet" href="./style.css?v=999" />
+
+  <!-- EB Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <main class="hero" aria-label="Hero Centro La Ruche">
+    <!-- Email -->
     <a class="email" href="mailto:centrolaruche@gmail.com">centrolaruche@gmail.com</a>
 
+    <!-- Hamburger -->
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
+    <!-- Overlay MENU (hamburger) -->
     <div class="menu-overlay" aria-hidden="true">
-      <div class="menu-content" role="dialog" aria-label="Menu">
-        <a href="la-prima-ruche.html" class="menu-link">La prima Ruche</a>
+      <nav class="menu-content" role="dialog" aria-label="Menu">
+        <!-- ORDINE ESATTO -->
+        <a href="index.html" class="menu-link">la rûche</a>
+        <a href="la-prima-ruche.html" class="menu-link">la prima rûche</a>
 
-        <button class="menu-link" type="button" onclick="openSecondaRuche()">
-          La seconda Ruche
+        <!-- apre overlay "in arrivo" -->
+        <button class="menu-link" type="button" id="open-seconda">
+          la seconda rûche
         </button>
-      </div>
+      </nav>
     </div>
   </main>
 
-  <div id="seconda-ruche" class="overlay" aria-hidden="true">
-    <div class="overlay-content" role="dialog" aria-label="Lavori in corso">
-      <p>Lavori in corso</p>
-      <button type="button" class="overlay-close" onclick="closeSecondaRuche()">Chiudi</button>
+  <!-- Overlay SECONDA RÛCHE (solo testo, niente bottone) -->
+  <div id="seconda-ruche" class="seconda-overlay" aria-hidden="true">
+    <div class="seconda-content" role="dialog" aria-label="In arrivo">
+      <p>in arrivo</p>
     </div>
   </div>
 
   <script>
     const btn = document.querySelector('.menu-btn');
     const menuOverlay = document.querySelector('.menu-overlay');
-    const secondaRuche = document.getElementById('seconda-ruche');
+    const secondaOverlay = document.getElementById('seconda-ruche');
+    const openSecondaBtn = document.getElementById('open-seconda');
+    const secondaContent = document.querySelector('.seconda-content');
 
     function openMenu() {
       menuOverlay.classList.add('open');
@@ -50,31 +65,44 @@
       btn.setAttribute('aria-expanded', 'false');
     }
 
+    function openSeconda() {
+      closeMenu();
+      secondaOverlay.classList.add('open');
+      secondaOverlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeSeconda() {
+      secondaOverlay.classList.remove('open');
+      secondaOverlay.setAttribute('aria-hidden', 'true');
+    }
+
+    // Toggle menu
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
     });
 
+    // Chiudi menu cliccando sullo sfondo overlay
     menuOverlay.addEventListener('click', closeMenu);
 
-    function openSecondaRuche() {
-      closeMenu();
-      secondaRuche.style.display = 'flex';
-      secondaRuche.setAttribute('aria-hidden', 'false');
-    }
+    // Apri seconda ruche
+    openSecondaBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openSeconda();
+    });
 
-    function closeSecondaRuche() {
-      secondaRuche.style.display = 'none';
-      secondaRuche.setAttribute('aria-hidden', 'true');
-    }
+    // Chiudi seconda ruche cliccando sullo sfondo
+    secondaOverlay.addEventListener('click', closeSeconda);
 
-    secondaRuche.addEventListener('click', closeSecondaRuche);
-    document.querySelector('.overlay-content').addEventListener('click', (e) => e.stopPropagation());
+    // NON chiudere se clicchi sul testo
+    secondaContent.addEventListener('click', (e) => e.stopPropagation());
 
+    // ESC chiude tutto
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeMenu();
-        closeSecondaRuche();
+        closeSeconda();
       }
     });
   </script>
