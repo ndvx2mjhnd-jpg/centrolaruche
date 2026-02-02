@@ -8,6 +8,22 @@
 </head>
 
 <body class="ruche-page">
+  <!-- Hamburger + menu (identico alla home) -->
+<a class="email" href="mailto:centrolaruche@gmail.com">centrolaruche@gmail.com</a>
+
+<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="menu-overlay" aria-hidden="true">
+  <nav class="menu-content" role="dialog" aria-label="Menu">
+    <a href="index.html" class="menu-link">la rûche</a>
+    <a href="la-prima-ruche.html" class="menu-link">la prima rûche</a>
+    <button class="menu-link" type="button" id="open-seconda">
+      la seconda rûche
+    </button>
+  </nav>
+</div>
 
   <header class="ruche-header">
     <a href="index.html" class="back-home">← Centro La Ruche</a>
@@ -22,6 +38,56 @@
    
 
   </main>
+<script>
+  const btn = document.querySelector('.menu-btn');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const secondaOverlay = document.getElementById('seconda-ruche');
+  const openSecondaBtn = document.getElementById('open-seconda');
 
+  function openMenu() {
+    menuOverlay.classList.add('open');
+    menuOverlay.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    menuOverlay.classList.remove('open');
+    menuOverlay.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  function openSeconda() {
+    closeMenu();
+    secondaOverlay.classList.add('open');
+    secondaOverlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeSeconda() {
+    secondaOverlay.classList.remove('open');
+    secondaOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  menuOverlay.addEventListener('click', closeMenu);
+
+  openSecondaBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openSeconda();
+  });
+
+  secondaOverlay.addEventListener('click', closeSeconda);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu();
+      closeSeconda();
+    }
+  });
+</script>
 </body>
 </html>
