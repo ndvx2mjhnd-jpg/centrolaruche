@@ -118,40 +118,96 @@ body{
   text-underline-offset: 8px;
 }
 
-/* SECONDA RUCHE OVERLAY */
-.overlay{
+/* =========================
+   SECONDA RÛCHE — overlay "in arrivo"
+   ========================= */
+
+.seconda-overlay{
   position: fixed;
   inset: 0;
-  background: rgba(245, 238, 228, 0.95);
-  display: none;
+  background: rgba(245, 238, 228, 0.92); /* carta, morbida */
+  display: flex;
   align-items: center;
   justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
   z-index: 30000;
 }
 
-.overlay-content{
-  text-align: center;
-  font-size: 22px;
-  letter-spacing: 0.04em;
-  opacity: 0.90;
-  padding: 22px 26px;
-  border-radius: 12px;
-  background: rgba(239, 231, 221, 0.75);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+.seconda-overlay.open{
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.overlay-close{
-  margin-top: 14px;
-  background: none;
-  border: 1px solid rgba(31,31,31,0.25);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font: inherit;
-  cursor: pointer;
+.seconda-content{
+  /* niente bottone, solo sussurro */
+  text-align: center;
+  padding: 18px 22px;
+  border-radius: 14px;
+
+  background: rgba(239, 231, 221, 0.65);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.seconda-content p{
+  font-family: "EB Garamond", serif;
+  font-size: 20px;              /* elegante, non grande */
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  opacity: 0.78;                /* sussurro */
+  text-transform: none;         /* resta minuscolo */
 }
 
 /* MOBILE */
 @media (max-width: 768px){
   .email{ font-size: 16px; top: 14px; }
   .menu-content{ font-size: 24px; }
+  .seconda-content p{ font-size: 18px; }
+}
+
+/* =========================
+   (Se ti servono) Stili pagina "la prima ruche"
+   (non toccano la home)
+   ========================= */
+
+body.ruche-page {
+  background: #f5f1e8;
+  color: #1f1f1f;
+  font-family: Georgia, serif;
+}
+
+.ruche-header {
+  padding: 1.5rem;
+}
+
+.back-home {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.ruche-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.ruche-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.ruche-text {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ruche-quote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-style: italic;
 }
