@@ -92,11 +92,13 @@ body{
 .menu-content{
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 
-  font-size: 28px;
-  letter-spacing: 0.08em;
+  font-family: Cambria, "Times New Roman", serif;
+  font-size: 20px;          /* più piccolo, più discreto */
+  letter-spacing: 0.04em;   /* meno spazioso */
   text-align: center;
+  opacity: 0.75;            /* delicato, non invadente */
 }
 
 .menu-link{
@@ -114,8 +116,8 @@ body{
 }
 
 .menu-link:hover{
-  text-decoration: underline;
-  text-underline-offset: 8px;
+  opacity: 1;
+  text-decoration: none;
 }
 
 /* =========================
@@ -161,7 +163,7 @@ body{
 /* MOBILE */
 @media (max-width: 768px){
   .email{ font-size: 16px; top: 14px; }
-  .menu-content{ font-size: 24px; }
+  .menu-content{ font-size: 18px; }
   .seconda-content p{ font-size: 18px; }
 }
 
