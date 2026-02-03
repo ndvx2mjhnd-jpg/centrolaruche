@@ -145,26 +145,24 @@ body{
 
 .seconda-content {
   text-align: center;
-  font-family: 'EB Garamond', serif;
-  font-size: 26px;
   letter-spacing: 0.06em;
   opacity: 0.75;
 }
 
 .seconda-content p{
   font-family: "EB Garamond", serif;
-  font-size: 20px;              /* elegante, non grande */
-  letter-spacing: 0.02em;
+  font-size: 19px;            /* più sussurro */
+  letter-spacing: 0.05em;
   font-weight: 400;
-  opacity: 0.78;                /* sussurro */
-  text-transform: none;         /* resta minuscolo */
+  opacity: 0.72;
+  text-transform: lowercase;
 }
 
 /* MOBILE */
 @media (max-width: 768px){
   .email{ font-size: 16px; top: 14px; }
   .menu-content{ font-size: 18px; }
-  .seconda-content p{ font-size: 18px; }
+  .seconda-content p{ font-size: 17px; }
 }
 
 /* =========================
