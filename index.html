@@ -32,6 +32,9 @@
 <button class="menu-link" type="button" id="open-seconda">
   La Ruche
 </button>
+        <button class="menu-link" type="button" id="open-contatti">
+  Contatti
+</button>
       </nav>
     </div>
   </main>
@@ -42,13 +45,19 @@
       <p>in arrivo</p>
     </div>
   </div>
-
+<div id="contatti-overlay" class="seconda-overlay" aria-hidden="true">
+  <div class="seconda-content" role="dialog">
+    <a href="mailto:centrolaruche@gmail.com" class="contatti-mail">
+      centrolaruche@gmail.com
+    </a>
+  </div>
+</div>
   <script>
     const btn = document.querySelector('.menu-btn');
     const menuOverlay = document.querySelector('.menu-overlay');
     const secondaOverlay = document.getElementById('seconda-ruche');
     const openSecondaBtn = document.getElementById('open-seconda');
-    const secondaContent = document.querySelector('.seconda-content');
+    const secondaContent = secondaOverlay.querySelector('.seconda-content');
 
     function openMenu() {
       menuOverlay.classList.add('open');
@@ -72,7 +81,28 @@
       secondaOverlay.classList.remove('open');
       secondaOverlay.setAttribute('aria-hidden', 'true');
     }
+const openContattiBtn = document.getElementById('open-contatti');
+const contattiOverlay = document.getElementById('contatti-overlay');
 
+function openContatti() {
+  closeMenu();
+  contattiOverlay.classList.add('open');
+  contattiOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeContatti() {
+  contattiOverlay.classList.remove('open');
+  contattiOverlay.setAttribute('aria-hidden', 'true');
+}
+
+openContattiBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  openContatti();
+});
+
+contattiOverlay.addEventListener('click', closeContatti);
+    
     // Toggle menu
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -100,7 +130,9 @@
       if (e.key === 'Escape') {
         closeMenu();
         closeSeconda();
+        closeContatti();
       }
+      
     });
   </script>
 </body>
