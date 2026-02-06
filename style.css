@@ -209,9 +209,12 @@ body.ruche-page {
   line-height: 1.6;
   font-style: italic;
 }
-/* DESKTOP: un filo di aria sopra così la mail non entra nella cartolina */
-@media (min-width: 1025px){
-  .email{
-    top: 22px;
+/* DESKTOP + TABLET: aria sopra e sotto per contenere la mail */
+@media (min-width: 769px){
+  .hero{
+    height: 94vh;              /* un filo meno di full screen */
+    padding-top: 36px;        /* aria sopra (mail respira) */
+    padding-bottom: 24px;     /* aria sotto */
+    box-sizing: border-box;
   }
 }
