@@ -209,3 +209,9 @@ body.ruche-page {
   line-height: 1.6;
   font-style: italic;
 }
+/* DESKTOP: un filo di aria sopra così la mail non entra nella cartolina */
+@media (min-width: 1025px){
+  .email{
+    top: 22px;
+  }
+}
