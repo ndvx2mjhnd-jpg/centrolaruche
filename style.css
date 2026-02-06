@@ -209,12 +209,29 @@ body.ruche-page {
   line-height: 1.6;
   font-style: italic;
 }
-/* DESKTOP + TABLET: aria sopra e sotto per contenere la mail */
-@media (min-width: 769px){
+/* TABLET: aria sopra/sotto per contenere la mail */
+@media (min-width: 769px) and (max-width: 1024px){
   .hero{
-    height: 94vh;              /* un filo meno di full screen */
-    padding-top: 36px;        /* aria sopra (mail respira) */
-    padding-bottom: 24px;     /* aria sotto */
+    height: 94vh;
+    padding-top: 36px;
+    padding-bottom: 24px;
     box-sizing: border-box;
+  }
+
+}
+/* DESKTOP: aria sopra/sotto reale (la cartolina non entra nel padding) */
+@media (min-width: 1025px){
+  .hero{
+    height: 94vh;
+    padding-top: 44px;      /* aria sopra per la mail */
+    padding-bottom: 28px;   /* aria sotto */
+    box-sizing: border-box;
+
+    background-origin: content-box;
+    background-clip: content-box;
+  }
+
+  .email{
+    top: 18px; /* resta ferma in alto */
   }
 }
