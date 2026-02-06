@@ -209,3 +209,34 @@ body.ruche-page {
   line-height: 1.6;
   font-style: italic;
 }
+/* =========================
+   RESPONSIVE FIX: Desktop / Mobile
+   ========================= */
+
+/* 1) DESKTOP: un filo di aria sopra per la mail */
+@media (min-width: 1025px){
+  .hero{
+    /* sposta la cartolina un po’ più in basso */
+    background-position: center 26px;
+  }
+
+  .email{
+    /* leggermente più in alto, ma resta nel “margine” */
+    top: 14px;
+  }
+}
+
+/* 2) MOBILE: meno aria sopra/sotto */
+@media (max-width: 768px){
+  .hero{
+    /* rende la cartolina più grande nel viewport */
+    background-size: cover;
+    /* evita che tagli male: privilegia la parte alta */
+    background-position: center top;
+  }
+
+  .email{
+    top: 10px;
+    font-size: 16px;
+  }
+}
