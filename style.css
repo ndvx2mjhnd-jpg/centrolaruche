@@ -235,3 +235,16 @@ body.ruche-page {
     top: 18px; /* resta ferma in alto */
   }
 }
+.contatti-mail{
+  font-family: Cambria, "Times New Roman", serif;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.75;
+}
+.contatti-mail:hover{
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
