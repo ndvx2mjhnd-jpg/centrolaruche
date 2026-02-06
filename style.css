@@ -158,12 +158,7 @@ body{
   text-transform: lowercase;
 }
 
-/* MOBILE */
-@media (max-width: 768px){
-  .email{ font-size: 16px; top: 14px; }
-  .menu-content{ font-size: 18px; }
-  .seconda-content p{ font-size: 17px; }
-}
+
 
 /* =========================
    (Se ti servono) Stili pagina "la prima ruche"
@@ -209,34 +204,40 @@ body.ruche-page {
   line-height: 1.6;
   font-style: italic;
 }
+
+
 /* =========================
-   RESPONSIVE FIX: Desktop / Mobile
+   RESPONSIVE: niente tagli, meno aria
    ========================= */
 
-/* 1) DESKTOP: un filo di aria sopra per la mail */
+/* DESKTOP: un filo di aria sopra così la mail non entra nella cartolina */
 @media (min-width: 1025px){
   .hero{
-    /* sposta la cartolina un po’ più in basso */
-    background-position: center 26px;
+    background-position: center 24px; /* spinge la cartolina un po' più in basso */
   }
+  .email{ top: 14px; }
+}
 
-  .email{
-    /* leggermente più in alto, ma resta nel “margine” */
-    top: 14px;
+/* TABLET (iPad): equilibrio, meno aria ma immagine intera */
+@media (min-width: 769px) and (max-width: 1024px){
+  .hero{
+    height: 92vh;                 /* meno aria sopra/sotto */
+    background-size: contain;     /* NON taglia */
+    background-position: center;  /* centrata */
   }
 }
 
-/* 2) MOBILE: meno aria sopra/sotto */
+/* MOBILE: ancora meno aria, immagine intera (NO crop) */
 @media (max-width: 768px){
   .hero{
-    /* rende la cartolina più grande nel viewport */
-    background-size: cover;
-    /* evita che tagli male: privilegia la parte alta */
-    background-position: center top;
+    height: 84vh;                 /* riduce aria sopra/sotto */
+    background-size: contain;     /* NON taglia */
+    background-position: center;  /* centrata */
   }
-
   .email{
     top: 10px;
     font-size: 16px;
   }
+     .menu-content{ font-size: 18px; }
+  .seconda-content p{ font-size: 17px; }
 }
