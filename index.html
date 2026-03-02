@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="it">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,11 +20,11 @@
   <meta property="og:description" content="Centro La Ruche — Un’opera vivente, una scuola vocazionale">
   <meta property="og:image" content="https://centrolaruche.it/og-image.jpg">
   <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://centrolaruche.it/">
   <meta property="og:site_name" content="Centro La Ruche">
 
-  <!-- Twitter / WhatsApp -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Centro La Ruche — Un’opera vivente, una scuola vocazionale">
   <meta name="twitter:description" content="Centro La Ruche — Un’opera vivente, una scuola vocazionale">
@@ -34,7 +36,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/style.css?v=1001" />
+  <link rel="stylesheet" href="/style.css?v=1002" />
 
   <!-- EB Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,47 +47,46 @@
 <body>
   <main class="hero" aria-label="Hero Centro La Ruche">
 
-
     <!-- Hamburger -->
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Overlay MENU (hamburger) -->
+    <!-- Overlay MENU -->
     <div class="menu-overlay" aria-hidden="true">
       <nav class="menu-content" role="dialog" aria-label="Menu">
-        <!-- ORDINE ESATTO -->
         <a href="index.html" class="menu-link">Home</a>
-<a href="la-prima-ruche.html" class="menu-link">La Rûche 1904–1917</a>
-<button class="menu-link" type="button" id="open-seconda">
-  La Ruche
-</button>
-        <button class="menu-link" type="button" id="open-contatti">
-  Contatti
-</button>
+        <a href="la-prima-ruche.html" class="menu-link">La Rûche 1904–1917</a>
+        <button class="menu-link" type="button" id="open-seconda">La Ruche</button>
+        <button class="menu-link" type="button" id="open-contatti">Contatti</button>
       </nav>
     </div>
   </main>
 
-  <!-- Overlay SECONDA RÛCHE (solo testo, niente bottone) -->
+  <!-- Overlay SECONDA RÛCHE -->
   <div id="seconda-ruche" class="seconda-overlay" aria-hidden="true">
     <div class="seconda-content" role="dialog" aria-label="In arrivo">
-      <p>in arrivo</p>
+      <p>In arrivo</p>
     </div>
   </div>
-<div id="contatti-overlay" class="seconda-overlay" aria-hidden="true">
-  <div class="seconda-content" role="dialog">
-    <a href="mailto:centrolaruche@gmail.com" class="contatti-mail">
-      centrolaruche@gmail.com
-    </a>
+
+  <!-- Overlay CONTATTI -->
+  <div id="contatti-overlay" class="seconda-overlay" aria-hidden="true">
+    <div class="seconda-content" role="dialog">
+      <a href="mailto:centrolaruche@gmail.com" class="contatti-mail">
+        centrolaruche@gmail.com
+      </a>
+    </div>
   </div>
-</div>
+
   <script>
     const btn = document.querySelector('.menu-btn');
     const menuOverlay = document.querySelector('.menu-overlay');
     const secondaOverlay = document.getElementById('seconda-ruche');
     const openSecondaBtn = document.getElementById('open-seconda');
     const secondaContent = secondaOverlay.querySelector('.seconda-content');
+    const openContattiBtn = document.getElementById('open-contatti');
+    const contattiOverlay = document.getElementById('contatti-overlay');
 
     function openMenu() {
       menuOverlay.classList.add('open');
@@ -109,58 +110,48 @@
       secondaOverlay.classList.remove('open');
       secondaOverlay.setAttribute('aria-hidden', 'true');
     }
-const openContattiBtn = document.getElementById('open-contatti');
-const contattiOverlay = document.getElementById('contatti-overlay');
 
-function openContatti() {
-  closeMenu();
-  contattiOverlay.classList.add('open');
-  contattiOverlay.setAttribute('aria-hidden', 'false');
-}
+    function openContatti() {
+      closeMenu();
+      contattiOverlay.classList.add('open');
+      contattiOverlay.setAttribute('aria-hidden', 'false');
+    }
 
-function closeContatti() {
-  contattiOverlay.classList.remove('open');
-  contattiOverlay.setAttribute('aria-hidden', 'true');
-}
+    function closeContatti() {
+      contattiOverlay.classList.remove('open');
+      contattiOverlay.setAttribute('aria-hidden', 'true');
+    }
 
-openContattiBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  openContatti();
-});
-
-contattiOverlay.addEventListener('click', closeContatti);
-    
-    // Toggle menu
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    // Chiudi menu cliccando sullo sfondo overlay
     menuOverlay.addEventListener('click', closeMenu);
 
-    // Apri seconda ruche
     openSecondaBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       openSeconda();
     });
 
-    // Chiudi seconda ruche cliccando sullo sfondo
     secondaOverlay.addEventListener('click', closeSeconda);
-
-    // NON chiudere se clicchi sul testo
     secondaContent.addEventListener('click', (e) => e.stopPropagation());
 
-    // ESC chiude tutto
+    openContattiBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openContatti();
+    });
+
+    contattiOverlay.addEventListener('click', closeContatti);
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeMenu();
         closeSeconda();
         closeContatti();
       }
-      
     });
   </script>
 </body>
